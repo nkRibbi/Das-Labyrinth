@@ -44,6 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DrachenRechnen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DrachenRechnen.Designer.cs">
+      <DependentUpon>DrachenRechnen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Labyrinth.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,6 +64,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DrachenRechnen.resx">
+      <DependentUpon>DrachenRechnen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Labyrinth.resx">
       <DependentUpon>Labyrinth.cs</DependentUpon>
     </EmbeddedResource>
