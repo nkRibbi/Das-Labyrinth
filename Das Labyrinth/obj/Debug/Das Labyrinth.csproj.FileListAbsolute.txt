@@ -1,0 +1,10 @@
+D:\Haspel\Das Labyrinth\Das Labyrinth\bin\Debug\Das Labyrinth.exe.config
+D:\Haspel\Das Labyrinth\Das Labyrinth\bin\Debug\Das Labyrinth.exe
+D:\Haspel\Das Labyrinth\Das Labyrinth\bin\Debug\Das Labyrinth.pdb
+D:\Haspel\Das Labyrinth\Das Labyrinth\obj\Debug\Das Labyrinth.csprojResolveAssemblyReference.cache
+D:\Haspel\Das Labyrinth\Das Labyrinth\obj\Debug\Das_Labyrinth.Labyrinth.resources
+D:\Haspel\Das Labyrinth\Das Labyrinth\obj\Debug\Das_Labyrinth.Menu.resources
+D:\Haspel\Das Labyrinth\Das Labyrinth\obj\Debug\Das_Labyrinth.Properties.Resources.resources
+D:\Haspel\Das Labyrinth\Das Labyrinth\obj\Debug\Das Labyrinth.csproj.GenerateResource.Cache
+D:\Haspel\Das Labyrinth\Das Labyrinth\obj\Debug\Das Labyrinth.exe
+D:\Haspel\Das Labyrinth\Das Labyrinth\obj\Debug\Das Labyrinth.pdb
