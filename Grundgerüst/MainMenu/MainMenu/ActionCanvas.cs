@@ -16,7 +16,7 @@ namespace MainMenu
         static int w, h;
 
         // Inizialisiere Bild (komisch wieso ich das hier machen muss und nicht in der eigentlichen funktion dafür...)
-        Bitmap LinkWalkAnim = new Bitmap("D:\\Office\\Berufsschule\\Am Haspel\\IT Projekte\\Spiel\\Grundgerüst\\MainMenu\\MainMenu\\src\\link_move_anim.png");
+        Bitmap LinkWalkAnim = new Bitmap("E:\\Das-Labyrinth\\Grundgerüst\\MainMenu\\MainMenu\\src\\link_move_anim.png");
         Boolean isDebug = true;
         Boolean isStart = false;
 

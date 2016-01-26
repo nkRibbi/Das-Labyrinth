@@ -10,12 +10,3 @@ E:\Das-Labyrinth\Grundgerüst\MainMenu\MainMenu\obj\Debug\MainMenu.pdb
 C:\Users\Radiac\Desktop\Grundgerüst\MainMenu\MainMenu\bin\Debug\MainMenu.exe.config
 C:\Users\Radiac\Desktop\Grundgerüst\MainMenu\MainMenu\obj\Debug\MainMenu.exe
 C:\Users\Radiac\Desktop\Grundgerüst\MainMenu\MainMenu\obj\Debug\MainMenu.pdb
-D:\Office\Berufsschule\Am Haspel\IT Projekte\Spiel\Grundgerüst\MainMenu\MainMenu\bin\Debug\MainMenu.exe.config
-D:\Office\Berufsschule\Am Haspel\IT Projekte\Spiel\Grundgerüst\MainMenu\MainMenu\obj\Debug\MainMenu.exe
-D:\Office\Berufsschule\Am Haspel\IT Projekte\Spiel\Grundgerüst\MainMenu\MainMenu\obj\Debug\MainMenu.pdb
-D:\Office\Berufsschule\Am Haspel\IT Projekte\Spiel\Grundgerüst\MainMenu\MainMenu\bin\Debug\MainMenu.exe
-D:\Office\Berufsschule\Am Haspel\IT Projekte\Spiel\Grundgerüst\MainMenu\MainMenu\bin\Debug\MainMenu.pdb
-D:\Office\Berufsschule\Am Haspel\IT Projekte\Spiel\Grundgerüst\MainMenu\MainMenu\obj\Debug\MainMenu.csprojResolveAssemblyReference.cache
-D:\Office\Berufsschule\Am Haspel\IT Projekte\Spiel\Grundgerüst\MainMenu\MainMenu\obj\Debug\MainMenu.ActionCanvas.resources
-D:\Office\Berufsschule\Am Haspel\IT Projekte\Spiel\Grundgerüst\MainMenu\MainMenu\obj\Debug\MainMenu.Properties.Resources.resources
-D:\Office\Berufsschule\Am Haspel\IT Projekte\Spiel\Grundgerüst\MainMenu\MainMenu\obj\Debug\MainMenu.csproj.GenerateResource.Cache
