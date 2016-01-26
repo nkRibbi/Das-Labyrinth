@@ -11,34 +11,31 @@ using System.Windows.Forms;
 
 namespace Das_Labyrinth
 {
-    public partial class DrachenRechnen : Form
+    public partial class DrachenRechnen: Form
     {
-        Menu menu = new Menu();
-
+        Menu Menu_Frame = new Menu();
         int difficulty;
+        int result, number_one, number_two, answer_A, answer_B, answer_C, answer_D;
 
         public DrachenRechnen()
         {
             InitializeComponent();
-            //setze den Schwierigkeitsgrad
-            difficulty = menu.getDifficulty();
-        }
+            //setze den Schwierigkeitsgrad und das Geschlecht
+            difficulty = Menu_Frame.Difficulty;
+            string gender = Menu_Frame.Gender;
 
-        int result, number_one, number_two, answer_A, answer_B, answer_C, answer_D;
-
-        private void lbl_Question_Click(object sender, EventArgs e)
-        {
+            lbl_difficulty.Text = "Level " + difficulty;
+            lbl_gender.Text = gender;
             start();
         }
-
-        public void start()
+        private void start()
         {
             Random rnd = new Random();
             //generiere operanten sowie antwortmöglichkeiten
             number_one = rnd.Next(0, difficulty * 10);
             number_two = rnd.Next(0, difficulty * 10);
             result = number_two + number_one;
-            lbl_Question.Text = number_one + "+" + number_two;
+            lbl_Question.Text = number_one + " + " + number_two;
 
             answer_A = rnd.Next(0, difficulty * 20);
             answer_B = rnd.Next(0, difficulty * 20);
@@ -61,7 +58,12 @@ namespace Das_Labyrinth
                 case 3: lbl_AnswerD.Text = result.ToString(); break;
             }
         }
+        private void lbl_Question_Click(object sender, EventArgs e)
+        {
+            start();
+        }
 
+        /* Vergleiche den Wert des angeklickten Labels mit der richtigen Antwort*/
         public void checkAnswer_Click(object sender, EventArgs e)
         {
             Label label_clicked = sender as Label;

@@ -39,10 +39,9 @@
             // 
             // btn_Start
             // 
-            this.btn_Start.Location = new System.Drawing.Point(412, 369);
-            this.btn_Start.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Start.Location = new System.Drawing.Point(309, 300);
             this.btn_Start.Name = "btn_Start";
-            this.btn_Start.Size = new System.Drawing.Size(316, 127);
+            this.btn_Start.Size = new System.Drawing.Size(237, 103);
             this.btn_Start.TabIndex = 0;
             this.btn_Start.Text = "Start";
             this.btn_Start.UseVisualStyleBackColor = true;
@@ -52,66 +51,64 @@
             // 
             this.lbl_Welcome.AutoSize = true;
             this.lbl_Welcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F);
-            this.lbl_Welcome.Location = new System.Drawing.Point(212, 59);
-            this.lbl_Welcome.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_Welcome.Location = new System.Drawing.Point(159, 48);
             this.lbl_Welcome.Name = "lbl_Welcome";
-            this.lbl_Welcome.Size = new System.Drawing.Size(739, 67);
+            this.lbl_Welcome.Size = new System.Drawing.Size(583, 54);
             this.lbl_Welcome.TabIndex = 1;
             this.lbl_Welcome.Text = "Willkommen zum Labyrinth";
             // 
             // cbb_Gender
             // 
+            this.cbb_Gender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbb_Gender.FormattingEnabled = true;
             this.cbb_Gender.Items.AddRange(new object[] {
             "Mädchen",
             "Junge"});
-            this.cbb_Gender.Location = new System.Drawing.Point(16, 204);
-            this.cbb_Gender.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbb_Gender.Location = new System.Drawing.Point(12, 166);
             this.cbb_Gender.Name = "cbb_Gender";
-            this.cbb_Gender.Size = new System.Drawing.Size(387, 24);
+            this.cbb_Gender.Size = new System.Drawing.Size(291, 21);
             this.cbb_Gender.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 185);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(12, 150);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(212, 17);
+            this.label1.Size = new System.Drawing.Size(160, 13);
             this.label1.TabIndex = 4;
             this.label1.Text = "Bist du ein Mädchen oder Junge";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(732, 185);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(528, 150);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 17);
+            this.label2.Size = new System.Drawing.Size(90, 13);
             this.label2.TabIndex = 5;
             this.label2.Text = "Wähle dein Level";
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(465, 185);
+            this.progressBar1.Location = new System.Drawing.Point(349, 150);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(2);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(100, 23);
+            this.progressBar1.Size = new System.Drawing.Size(75, 19);
             this.progressBar1.TabIndex = 6;
             // 
             // cbb_Level
             // 
+            this.cbb_Level.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbb_Level.FormattingEnabled = true;
-            this.cbb_Level.Location = new System.Drawing.Point(708, 206);
-            this.cbb_Level.Margin = new System.Windows.Forms.Padding(4);
+            this.cbb_Level.Location = new System.Drawing.Point(531, 167);
             this.cbb_Level.Name = "cbb_Level";
-            this.cbb_Level.Size = new System.Drawing.Size(387, 24);
+            this.cbb_Level.Size = new System.Drawing.Size(291, 21);
             this.cbb_Level.TabIndex = 7;
             // 
             // Menu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1204, 603);
+            this.ClientSize = new System.Drawing.Size(903, 490);
             this.Controls.Add(this.cbb_Level);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.label2);
@@ -119,7 +116,6 @@
             this.Controls.Add(this.cbb_Gender);
             this.Controls.Add(this.lbl_Welcome);
             this.Controls.Add(this.btn_Start);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Menu";
             this.Text = "Menu";
             this.ResumeLayout(false);
