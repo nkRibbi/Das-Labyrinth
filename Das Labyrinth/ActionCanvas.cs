@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Input;
 
 
 namespace Das_Labyrinth
@@ -15,15 +16,14 @@ namespace Das_Labyrinth
     {
         static int w, h;
         //[AK] 
-        Bitmap LinkWalkAnim = new Bitmap("D:\\Haspel\\Das Labyrinth\\Das Labyrinth\\src\\link_move_anim.png");
+        //Bitmap LinkWalkAnim = new Bitmap("D:\\Haspel\\Das Labyrinth\\Das Labyrinth\\src\\link_move_anim.png");
 
         // Inizialisiere Bild (komisch wieso ich das hier machen muss und nicht in der eigentlichen funktion dafür...)
         //[TP]
-        //Bitmap LinkWalkAnim = new Bitmap("E:\\Das-Labyrinth\\Grundgerüst\\MainMenu\\MainMenu\\src\\link_move_anim.png");
+        Bitmap LinkWalkAnim = new Bitmap("D:\\Office\\Andreas GIT\\Das Labyrinth\\src\\link_move_anim.png");
         static int xFigure = 50;
         static int yFigure = 10;
         static byte figureFrame = 0;
-
         Boolean isDebug = true;
         Boolean isStart = true;
 
@@ -183,6 +183,10 @@ namespace Das_Labyrinth
                 if (frame > max) frame = (byte) min;
             }
             return frame;
+        }
+
+        public static class Keyboard
+        {
         }
 
         // Spiel-Logik die etwas verlangsamt ausgeführt wird gegenüber dem Zeichnen (kontrolliert)
