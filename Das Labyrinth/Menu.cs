@@ -71,7 +71,7 @@ namespace Das_Labyrinth
             Gender = cbb_Gender.Text;
             Player_name = txt_name.Text;
             Console.WriteLine(Difficulty);
-            DrachenRechnen frm = new DrachenRechnen();
+            ActionCanvas frm = new ActionCanvas();
             frm.Show();
         }
         /* [AK] */

@@ -1,4 +1,4 @@
-﻿namespace MainMenu
+﻿namespace Das_Labyrinth
 {
     partial class ActionCanvas
     {
