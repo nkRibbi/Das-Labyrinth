@@ -40,6 +40,14 @@ namespace Das_Labyrinth
             get { return difficulty; }
             set { difficulty = value; }
         }
+
+        static string player_name;
+        public string Player_name
+        {
+            get { return player_name; }
+            set { player_name = value; }
+        }
+
         //gibt den schwierigkeitsgrad für die öffentlichkeit frei
 
         public int setDifficulty()
@@ -61,6 +69,7 @@ namespace Das_Labyrinth
             /* Setze Schwierigkeit in abhängikeit des Textes der Combobox und rufe (das Labyrinth, Minispiel) */
             Difficulty = setDifficulty();
             Gender = cbb_Gender.Text;
+            Player_name = txt_name.Text;
             Console.WriteLine(Difficulty);
             DrachenRechnen frm = new DrachenRechnen();
             frm.Show();

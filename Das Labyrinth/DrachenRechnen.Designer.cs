@@ -36,6 +36,7 @@
             this.lbl_difficulty = new System.Windows.Forms.Label();
             this.lbl_gender = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.lbl_name = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lbl_Question
@@ -124,11 +125,21 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "Berechne:";
             // 
+            // lbl_name
+            // 
+            this.lbl_name.AutoSize = true;
+            this.lbl_name.Location = new System.Drawing.Point(689, 65);
+            this.lbl_name.Name = "lbl_name";
+            this.lbl_name.Size = new System.Drawing.Size(35, 13);
+            this.lbl_name.TabIndex = 9;
+            this.lbl_name.Text = "label2";
+            // 
             // DrachenRechnen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(765, 366);
+            this.Controls.Add(this.lbl_name);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbl_gender);
             this.Controls.Add(this.lbl_difficulty);
@@ -154,5 +165,6 @@
         private System.Windows.Forms.Label lbl_difficulty;
         private System.Windows.Forms.Label lbl_gender;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_name;
     }
 }

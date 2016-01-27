@@ -16,16 +16,18 @@ namespace Das_Labyrinth
         Menu Menu_Frame = new Menu();
         int difficulty;
         int result, number_one, number_two, answer_A, answer_B, answer_C, answer_D;
-
+        string player_name;
         public DrachenRechnen()
         {
             InitializeComponent();
             //setze den Schwierigkeitsgrad und das Geschlecht
             difficulty = Menu_Frame.Difficulty;
             string gender = Menu_Frame.Gender;
+            player_name = Menu_Frame.Player_name;
 
             lbl_difficulty.Text = "Level " + difficulty;
             lbl_gender.Text = gender;
+            lbl_name.Text = player_name;
             start();
         }
         private void start()

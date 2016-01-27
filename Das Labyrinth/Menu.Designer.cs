@@ -35,6 +35,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.cbb_Level = new System.Windows.Forms.ComboBox();
+            this.txt_name = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btn_Start
@@ -104,11 +106,29 @@
             this.cbb_Level.Size = new System.Drawing.Size(291, 21);
             this.cbb_Level.TabIndex = 7;
             // 
+            // txt_name
+            // 
+            this.txt_name.Location = new System.Drawing.Point(309, 255);
+            this.txt_name.Name = "txt_name";
+            this.txt_name.Size = new System.Drawing.Size(237, 20);
+            this.txt_name.TabIndex = 8;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(306, 239);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(124, 13);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Trage deinen Namen ein";
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(903, 490);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txt_name);
             this.Controls.Add(this.cbb_Level);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.label2);
@@ -132,6 +152,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.ComboBox cbb_Level;
+        private System.Windows.Forms.TextBox txt_name;
+        private System.Windows.Forms.Label label3;
     }
 }
 
