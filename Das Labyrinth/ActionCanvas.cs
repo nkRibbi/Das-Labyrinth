@@ -14,9 +14,12 @@ namespace Das_Labyrinth
     public partial class ActionCanvas : Form
     {
         static int w, h;
+        //[AK] 
+        Bitmap LinkWalkAnim = new Bitmap("D:\\Haspel\\Das Labyrinth\\Das Labyrinth\\src\\link_move_anim.png");
 
         // Inizialisiere Bild (komisch wieso ich das hier machen muss und nicht in der eigentlichen funktion dafür...)
-        Bitmap LinkWalkAnim = new Bitmap("D:\\Haspel\\Das Labyrinth\\Das Labyrinth\\src\\link_move_anim.png");
+        //[TP]
+        //Bitmap LinkWalkAnim = new Bitmap("E:\\Das-Labyrinth\\Grundgerüst\\MainMenu\\MainMenu\\src\\link_move_anim.png");
         static int xFigure = 50;
         static int yFigure = 10;
         static byte figureFrame = 0;
