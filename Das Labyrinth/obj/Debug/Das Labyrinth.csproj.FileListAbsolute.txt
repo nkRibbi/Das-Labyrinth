@@ -8,3 +8,4 @@ D:\Haspel\Das Labyrinth\Das Labyrinth\obj\Debug\Das_Labyrinth.Properties.Resourc
 D:\Haspel\Das Labyrinth\Das Labyrinth\obj\Debug\Das Labyrinth.csproj.GenerateResource.Cache
 D:\Haspel\Das Labyrinth\Das Labyrinth\obj\Debug\Das Labyrinth.exe
 D:\Haspel\Das Labyrinth\Das Labyrinth\obj\Debug\Das Labyrinth.pdb
+D:\Haspel\Das Labyrinth\Das Labyrinth\obj\Debug\Das_Labyrinth.DrachenRechnen.resources
