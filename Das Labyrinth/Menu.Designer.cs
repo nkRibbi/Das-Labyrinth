@@ -29,7 +29,6 @@ namespace Das_Labyrinth
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             this.btn_Start = new System.Windows.Forms.Button();
             this.lbl_Welcome = new System.Windows.Forms.Label();
             this.txt_name = new System.Windows.Forms.TextBox();
@@ -79,7 +78,6 @@ namespace Das_Labyrinth
             // pnl_Link
             // 
             this.pnl_Link.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.pnl_Link.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnl_Link.BackgroundImage")));
             this.pnl_Link.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnl_Link.Location = new System.Drawing.Point(335, 169);
             this.pnl_Link.Name = "pnl_Link";
@@ -90,7 +88,6 @@ namespace Das_Labyrinth
             // 
             // pnl_Zelda
             // 
-            this.pnl_Zelda.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnl_Zelda.BackgroundImage")));
             this.pnl_Zelda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnl_Zelda.Location = new System.Drawing.Point(504, 169);
             this.pnl_Zelda.Name = "pnl_Zelda";

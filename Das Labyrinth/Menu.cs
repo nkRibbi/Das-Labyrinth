@@ -15,71 +15,32 @@ namespace Das_Labyrinth
         public Menu()
         {
             InitializeComponent();
-            
-            //Level Label hinzufügen und 'Level 1' als selected auswählen
 
-            
+            //Set BackgroundImage der Panels zu dem dazugehörigen Bild
+            Bitmap bmp_link = new Bitmap("D:\\Haspel\\Das Labyrinth\\Das Labyrinth\\src\\Link.png");
+            Bitmap bmp_zelda = new Bitmap("D:\\Haspel\\Das Labyrinth\\Das Labyrinth\\src\\Zelda.png");
+            pnl_Link.BackgroundImage = bmp_link;
+            pnl_Zelda.BackgroundImage = bmp_zelda;
         }
-        /* [AK] */
-        //Get Set Geschlecht
         static string gender = "link";
         public string Gender
         {
             get { return gender; }
             set { gender = value; }
         }
-
-        //get set Schwierigkeit
         static int difficulty = 1;
         public int Difficulty
         {
             get { return difficulty; }
             set { difficulty = value; }
         }
-
         static string player_name;
         public string Player_name
         {
             get { return player_name; }
             set { player_name = value; }
         }
-
-        //gibt den schwierigkeitsgrad für die öffentlichkeit frei
-
-      
-        private void playerChoiceClick(object sender, EventArgs e)
-        {
-            PictureBox player = sender as PictureBox;
-            switch (player.Name)
-            {
-                case "pnl_Zelda": 
-                    pnl_Zelda.BackColor = Color.FromArgb(211, 211, 211); 
-                    pnl_Link.BackColor = Color.FromArgb(240, 240, 240);
-                    Gender = "zelda";
-                    break;
-                case "pnl_Link": 
-                    pnl_Link.BackColor = Color.FromArgb(211, 211, 211); 
-                    pnl_Zelda.BackColor = Color.FromArgb(240, 240, 240);
-                    Gender = "link";
-                    break;
-            }
-            player.BackColor = Color.FromArgb(211, 211, 211);
-        }
-
-        //public int setDifficulty()
-        //{
-        //    string difficulty = cbb_Level.Text;
-        //    switch (difficulty)
-        //    {
-        //        case "Level 1": return 1;
-        //        case "Level 2": return 2;
-        //        case "Level 3": return 3;
-        //        case "Level 4": return 4;
-        //        default: return 1;
-        //    }
-        //}
-
-        //Läd (atm noch) nur das Drachen rechnen Spiel und setzt das Level sowie das Geschlecht [TODO]
+        //Läd (atm noch) die Form die getestet werden soll und setzt das Level sowie das Geschlecht [TODO]
         private void btn_Start_Click(object sender, EventArgs e)
         {
             /* Setze Schwierigkeit in abhängikeit des Textes der Combobox und rufe (das Labyrinth, Minispiel) */
@@ -91,6 +52,28 @@ namespace Das_Labyrinth
             frm.Show();
         }
 
+
+        /* Einfache Abfrage welche PictureBox geklickt wurde. Und es wir die Farbe jeweils geändert. */
+        private void playerChoiceClick(object sender, EventArgs e)
+        {
+            PictureBox player = sender as PictureBox;
+            switch (player.Name)
+            {
+                case "pnl_Zelda":
+                    pnl_Zelda.BackColor = Color.FromArgb(211, 211, 211);
+                    pnl_Link.BackColor = Color.FromArgb(240, 240, 240);
+                    Gender = "zelda";
+                    break;
+                case "pnl_Link":
+                    pnl_Link.BackColor = Color.FromArgb(211, 211, 211);
+                    pnl_Zelda.BackColor = Color.FromArgb(240, 240, 240);
+                    Gender = "link";
+                    break;
+            }
+            player.BackColor = Color.FromArgb(211, 211, 211);
+        }
+
+        /* Selbe Logik wie oben. Ein Label wird ausgewählt und farblich hinterlegt, die andern drei werden auf die Hintergrundfarbe der Form gesetzt*/
         private void levelChoiceClick(object sender, EventArgs e)
         {
             Label level = sender as Label;
@@ -128,6 +111,7 @@ namespace Das_Labyrinth
             }
         }
 
+        /* Key Abfrage in der Textbox, keine Sonderzeichen sowie keine Ziffern dürfen verwendet werden */
         private void txt_name_KeyPress(object sender, KeyPressEventArgs e)
         {
             string chars = "+-*/!§$%&/()=?`@²³{[]}\'~_;.:€";
@@ -136,13 +120,10 @@ namespace Das_Labyrinth
                 e.Handled = true;
             }
         }
-
+        /* Beim Focus auf die Textbox wird sie leer gemacht */
         private void txt_name_Enter(object sender, EventArgs e)
         {
             txt_name.Text = "";
         }
-
-        
-        /* [AK] */
     }
 }
