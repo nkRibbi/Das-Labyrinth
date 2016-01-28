@@ -9,21 +9,26 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
 
-
 namespace Das_Labyrinth
 {
     public partial class ActionCanvas : Form
     {
         static int w, h;
-        //[AK] 
-        //Bitmap LinkWalkAnim = new Bitmap("D:\\Haspel\\Das Labyrinth\\Das Labyrinth\\src\\link_move_anim.png");
+
+        public bool Left { get; set; }
+        public bool Right { get; set; }
+        public bool Up { get; set; }
+        public bool Down { get; set; }
 
         // Inizialisiere Bild (komisch wieso ich das hier machen muss und nicht in der eigentlichen funktion dafür...)
+        //Bitmap LinkWalkAnim = new Bitmap("E:\\Das-Labyrinth\\Grundgerüst\\MainMenu\\MainMenu\\src\\link_move_anim.png");
         //[TP]
-        Bitmap LinkWalkAnim = new Bitmap("D:\\Office\\Andreas GIT\\Das Labyrinth\\src\\link_move_anim.png");
-        static int xFigure = 50;
-        static int yFigure = 10;
+        Bitmap LinkWalkAnim = new Bitmap("C:\\Users\\Radiac\\Desktop\\Grundgerüst\\MainMenu\\MainMenu\\src\\link_move_anim.png");
+        //[AK]
+        //Bitmap LinkWalkAnim = new Bitmap("D:\\Haspel\\Das Labyrinth\\Das Labyrinth\\src\\link_move_anim.png");
+
         static byte figureFrame = 0;
+
         Boolean isDebug = true;
         Boolean isStart = true;
 
@@ -44,7 +49,7 @@ namespace Das_Labyrinth
             // Erstellt Form unabhängigen Timer
 
             System.Timers.Timer a = new System.Timers.Timer();      // Neues Timer-Objekt
-            a.Interval = 1000 / 30;                                        // Intervall der Ausführung der A_Elapsed-Methode
+            a.Interval = 1;                                        // Intervall der Ausführung der A_Elapsed-Methode
             a.Elapsed += A_Elapsed;
             a.Enabled = true;
         }
@@ -66,8 +71,8 @@ namespace Das_Labyrinth
         }
 
         DateTime lastUpdate = DateTime.MinValue; // Letzer Zeitpunkt des Updates von Game-Logik
-        TimeSpan updateInterval = new TimeSpan(0, 0, 0, 0, 66); // Wie oft soll die Game-Logik aktualisiert werden (50ms)
-       
+        TimeSpan updateInterval = new TimeSpan(0, 0, 0, 0, 50); // Wie oft soll die Game-Logik aktualisiert werden (50ms)
+
         // Loop-Methode die alle x ms aufgerufen wird (siehe Intervall System-Timers)
         private void A_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
@@ -110,26 +115,25 @@ namespace Das_Labyrinth
         int xLinkWalkAnim = 10;
         int yLinkWalkAnim = 10;
 
-        static int speedObject = 1;
-        static Boolean up = false, down = true, left = false, right = false;
-            public void moveObject()
+        static int speedObject = 2;
+        public void moveObject()
         {
-            if (up)
+            if (Up)
             {
                 yLinkWalkAnim -= speedObject;
-                figureFrame = getFrame(figureFrame, (byte)14, (byte)20,(byte)4);
+                figureFrame = getFrame(figureFrame, (byte)14, (byte)20, (byte)4);
             }
-            if (down)
+            if (Down)
             {
                 yLinkWalkAnim += speedObject;
                 figureFrame = getFrame(figureFrame, (byte)21, (byte)27, (byte)4);
             }
-            if (left)
+            if (Left)
             {
                 xLinkWalkAnim -= speedObject;
                 figureFrame = getFrame(figureFrame, (byte)7, (byte)13, (byte)4);
             }
-            if (right)
+            if (Right)
             {
                 xLinkWalkAnim += speedObject;
                 figureFrame = getFrame(figureFrame, (byte)0, (byte)6, (byte)4);
@@ -138,27 +142,27 @@ namespace Das_Labyrinth
 
         // Simuliere Input
         // Rechteckige Bahn
-        static int i = 0;
-        public void moveRect()
-        {
-            i++;
-            switch (i)
-            {
-                case 40: down = false; right = true;
-                    break;
-                case 80: right = false; up = true;
-                    break;
-                case 120: up = false; left = true;
-                    break;
-                case 160: left = false; down = true; i = 0;
-                    break;
-                default:
-                    break;
-            }
-        }
+        //static int i = 0;
+        //public void moveRect()
+        //{
+        //    i++;
+        //    switch (i)
+        //    {
+        //        case 120: down = false; right = true;
+        //            break;
+        //        case 240: right = false; up = true;
+        //            break;
+        //        case 360: up = false; left = true;
+        //            break;
+        //        case 480: left = false; down = true; i = 0;
+        //            break;
+        //        default:
+        //            break;
+        //    }
+        //}
 
         // plotFrame Methode initialisiert und definiert das Bild und die Bereiche
-        public static void plotFrame (
+        public static void plotFrame(
             Bitmap bitmap, // Bildobjekt laden
             int width, // Bildlänge eines Frames
             int height, // Bildhöhe eines Frames
@@ -166,47 +170,46 @@ namespace Das_Labyrinth
             int x, //Position des Bild x
             int y, // Position des Bild y
             PaintEventArgs e
-            ) {
+            )
+        {
             Rectangle clipRect = new Rectangle(x, y, width, height); // Clippingbereich definieren
             e.Graphics.SetClip(clipRect); // Clippen
-            e.Graphics.DrawImage(bitmap, x-frame*width, y); // Zieht den Animationsstreifen per Frame (x-Pos des Bildes - Frame * Bildlänge) 
+            e.Graphics.DrawImage(bitmap, x - frame * width, y); // Zieht den Animationsstreifen per Frame (x-Pos des Bildes - Frame * Bildlänge) 
         }
 
         // Eine Methode zur Kontrolle der Framerate um das Bild langsamer zu machen (klappt nicht so ganz :P)
         static byte timerFrame = 0;
-        public static byte getFrame(byte frame, byte min, byte max, byte step) {
+        public static byte getFrame(byte frame, byte min, byte max, byte step)
+        {
             if (frame < min || frame > max) frame = min;
             if (step < 1) step = 1;
             if (timerFrame % step == 0)
             {
                 frame++;
-                if (frame > max) frame = (byte) min;
+                if (frame > max) frame = (byte)min;
             }
             return frame;
-        }
-
-        public static class Keyboard
-        {
         }
 
         // Spiel-Logik die etwas verlangsamt ausgeführt wird gegenüber dem Zeichnen (kontrolliert)
         void UpdateGameLogic()
         {
             moveObject();
+            //debugMode();
         }
 
         // Leinwand Methode die alles grafische darstellt
         private void ActionCanvas_Paint(object sender, PaintEventArgs e)
         {
-                //e.Graphics.DrawRectangle(Pens.Black, 30, 30, 0+i, 0+i); // lusdisch... aber useless xD
-                //e.Graphics.DrawImage(LinkWalkAnim, new Point(xLinkWalkAnim, yLinkWalkAnim));
+            //e.Graphics.DrawRectangle(Pens.Black, 30, 30, 0+i, 0+i); // lusdisch... aber useless xD
+            //e.Graphics.DrawImage(LinkWalkAnim, new Point(xLinkWalkAnim, yLinkWalkAnim));
 
-                /* --- Clipping--- (Wichtig: Clipping muss vor dem letzten Drawcall gesetzt werden)
-                Hier erstellen wir ein neues Grafikobjekt und legen es über unser SpriteObjekt.
-                Das Grafikobjekt ist ein Rect mit der gleichen Höhe unseres Grafikobjektes aber nur mit einer von uns definierten Breite.
-                Heisst: Bild ist 700 x30. Es handelt sich bei der Animation um 28 Einzerlbilder. Bedeutet 700 / 28 = 25. Bedeutet wir clippen
-                ein Feld von 25 x 30.
-                */
+            /* --- Clipping--- (Wichtig: Clipping muss vor dem letzten Drawcall gesetzt werden)
+            Hier erstellen wir ein neues Grafikobjekt und legen es über unser SpriteObjekt.
+            Das Grafikobjekt ist ein Rect mit der gleichen Höhe unseres Grafikobjektes aber nur mit einer von uns definierten Breite.
+            Heisst: Bild ist 700 x30. Es handelt sich bei der Animation um 28 Einzerlbilder. Bedeutet 700 / 28 = 25. Bedeutet wir clippen
+            ein Feld von 25 x 30.
+            */
             //Rectangle clipRect = new Rectangle(0, 0, 25, 30);
             //e.Graphics.SetClip(clipRect);
             //e.Graphics.DrawImage(LinkWalkAnim, 0, 0, LinkWalkAnim.Width, LinkWalkAnim.Height);
@@ -221,12 +224,51 @@ namespace Das_Labyrinth
 
             //e.Graphics.DrawImage(LinkWalkAnim, 0, 0, LinkWalkAnim.Width, LinkWalkAnim.Height);
             // plotMethode zeichnen
-            plotFrame(LinkWalkAnim, 25, 30, figureFrame, xFigure, yFigure, e);
+            plotFrame(LinkWalkAnim, 25, 30, figureFrame, xLinkWalkAnim, yLinkWalkAnim, e);
             Color backColor = LinkWalkAnim.GetPixel(1, 1);
             LinkWalkAnim.MakeTransparent(backColor);
 
             // Moving around some stuff
-            moveRect();
+            //moveRect();
+        }
+
+        //InputManager
+        private void ActionCanvas_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Left:
+                    Left = true;
+                    break;
+                case Keys.Right:
+                    Right = true;
+                    break;
+                case Keys.Up:
+                    Up = true;
+                    break;
+                case Keys.Down:
+                    Down = true;
+                    break;
+            }
+        }
+
+        private void ActionCanvas_KeyUp(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Left:
+                    Left = false;
+                    break;
+                case Keys.Right:
+                    Right = false;
+                    break;
+                case Keys.Up:
+                    Up = false;
+                    break;
+                case Keys.Down:
+                    Down = false;
+                    break;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
