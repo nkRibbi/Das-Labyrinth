@@ -150,6 +150,7 @@
             this.Controls.Add(this.lbl_Question);
             this.Name = "DrachenRechnen";
             this.Text = "DrachenRechnen";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.PaintSuccess);
             this.ResumeLayout(false);
             this.PerformLayout();
 

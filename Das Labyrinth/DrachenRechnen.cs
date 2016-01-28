@@ -11,12 +11,14 @@ using System.Windows.Forms;
 
 namespace Das_Labyrinth
 {
-    public partial class DrachenRechnen: Form
+    public partial class DrachenRechnen : Form
     {
         Menu Menu_Frame = new Menu();
         int difficulty;
         int result, number_one, number_two, answer_A, answer_B, answer_C, answer_D;
         string player_name;
+        System.Timers.Timer a = new System.Timers.Timer();
+
         public DrachenRechnen()
         {
             InitializeComponent();
@@ -24,6 +26,10 @@ namespace Das_Labyrinth
             difficulty = Menu_Frame.Difficulty;
             string gender = Menu_Frame.Gender;
             player_name = Menu_Frame.Player_name;
+
+
+            a.Interval = 1000 / 30;                                        // Intervall der Ausführung der A_Elapsed-Methode
+            a.Elapsed += A_Elapsed;
 
             lbl_difficulty.Text = "Level " + difficulty;
             lbl_gender.Text = gender;
@@ -33,16 +39,27 @@ namespace Das_Labyrinth
         private void start()
         {
             Random rnd = new Random();
-            //generiere operanten sowie antwortmöglichkeiten
-            number_one = rnd.Next(0, difficulty * 10);
-            number_two = rnd.Next(0, difficulty * 10);
-            result = number_two + number_one;
-            lbl_Question.Text = number_one + " + " + number_two;
+            char c_operand = '+';
+            a.Enabled = false;
 
-            answer_A = rnd.Next(0, difficulty * 20);
-            answer_B = rnd.Next(0, difficulty * 20);
-            answer_C = rnd.Next(0, difficulty * 20);
-            answer_D = rnd.Next(0, difficulty * 20);
+
+            //generiere operanten sowie antwortmöglichkeiten
+            number_one = rnd.Next(0, 10);
+            number_two = rnd.Next(0, 10);
+            int operand = rnd.Next(0, difficulty);
+            switch (operand)
+            {
+                case 0: result = number_one + number_two; c_operand = '+'; break;
+                case 1: result = number_one - number_two; c_operand = '-'; break;
+                case 2: result = number_one * number_two; c_operand = '*'; break;
+                //case 3: result = number_one / number_two; c_operand = '/'; break;
+            }
+            lbl_Question.Text = number_one + " " + c_operand + " " + number_two;
+
+            answer_A = rnd.Next(0, 20);
+            answer_B = rnd.Next(0, 20);
+            answer_C = rnd.Next(0, 20);
+            answer_D = rnd.Next(0, 20);
 
             //erstmal zufällige antwort möglichkeiten für alle vier
             lbl_AnswerA.Text = answer_A.ToString();
@@ -51,7 +68,7 @@ namespace Das_Labyrinth
             lbl_AnswerD.Text = answer_D.ToString();
 
             //ersetze ein AntwortFeld mit der richtigen Antwort
-            int decide = rnd.Next(0, 3);
+            int decide = rnd.Next(0, 4);
             switch (decide)
             {
                 case 0: lbl_AnswerA.Text = result.ToString(); break;
@@ -74,7 +91,9 @@ namespace Das_Labyrinth
 
             if (result == answer)
             {
-                lbl_Question.Text = "Richtige Antwort";
+                lbl_Question.Text = "Richtige Antwort" + player_name;
+                a.Enabled = true;
+                
             }
             else
             {
@@ -82,6 +101,38 @@ namespace Das_Labyrinth
             }
 
         }
-
+        int i = 0;
+        public void successAnimation()
+        {
+            
+            i++;
+        }
+        public void Repaint()
+        {
+            if (this.InvokeRequired)
+            {
+                try
+                {
+                    this.Invoke(new Action(Repaint));
+                }
+                catch (InvalidOperationException)
+                { }
+            }
+            else
+            {
+                this.Refresh();
+            }
+        }
+        public void A_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            ActionCanvas canvas = new ActionCanvas();
+            Repaint();
+        }
+        private void PaintSuccess(object sender, PaintEventArgs e)
+        {
+            //e.Graphics.DrawImage(image, Point)
+            e.Graphics.DrawRectangle(Pens.Black, 0 + i, 0 + i, 0 + i, 0 + i);
+            successAnimation();
+        }
     }
 }

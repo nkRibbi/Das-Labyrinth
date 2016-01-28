@@ -89,7 +89,7 @@ namespace Das_Labyrinth
         }
 
         // Refresh Methode zur Bereinigung der Leinwand
-        void Repaint()
+        public void Repaint()
         {
             if (this.InvokeRequired)
             {

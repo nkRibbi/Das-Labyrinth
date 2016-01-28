@@ -1,4 +1,5 @@
-﻿namespace Das_Labyrinth
+﻿using System.Drawing;
+namespace Das_Labyrinth
 {
     partial class Menu
     {
@@ -28,22 +29,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             this.btn_Start = new System.Windows.Forms.Button();
             this.lbl_Welcome = new System.Windows.Forms.Label();
-            this.cbb_Gender = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.cbb_Level = new System.Windows.Forms.ComboBox();
             this.txt_name = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.pnl_Link = new System.Windows.Forms.PictureBox();
+            this.pnl_Zelda = new System.Windows.Forms.PictureBox();
+            this.lbl_Level1 = new System.Windows.Forms.Label();
+            this.lbl_Level2 = new System.Windows.Forms.Label();
+            this.lbl_Level3 = new System.Windows.Forms.Label();
+            this.lbl_Level4 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pnl_Link)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pnl_Zelda)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_Start
             // 
-            this.btn_Start.Location = new System.Drawing.Point(309, 300);
+            this.btn_Start.Location = new System.Drawing.Point(224, 304);
             this.btn_Start.Name = "btn_Start";
-            this.btn_Start.Size = new System.Drawing.Size(237, 103);
+            this.btn_Start.Size = new System.Drawing.Size(468, 85);
             this.btn_Start.TabIndex = 0;
             this.btn_Start.Text = "Start";
             this.btn_Start.UseVisualStyleBackColor = true;
@@ -53,91 +57,111 @@
             // 
             this.lbl_Welcome.AutoSize = true;
             this.lbl_Welcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F);
-            this.lbl_Welcome.Location = new System.Drawing.Point(159, 48);
+            this.lbl_Welcome.Location = new System.Drawing.Point(159, 19);
             this.lbl_Welcome.Name = "lbl_Welcome";
             this.lbl_Welcome.Size = new System.Drawing.Size(583, 54);
             this.lbl_Welcome.TabIndex = 1;
             this.lbl_Welcome.Text = "Willkommen zum Labyrinth";
             // 
-            // cbb_Gender
-            // 
-            this.cbb_Gender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbb_Gender.FormattingEnabled = true;
-            this.cbb_Gender.Items.AddRange(new object[] {
-            "Mädchen",
-            "Junge"});
-            this.cbb_Gender.Location = new System.Drawing.Point(12, 166);
-            this.cbb_Gender.Name = "cbb_Gender";
-            this.cbb_Gender.Size = new System.Drawing.Size(291, 21);
-            this.cbb_Gender.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 150);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(160, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Bist du ein Mädchen oder Junge";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(528, 150);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Wähle dein Level";
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(349, 150);
-            this.progressBar1.Margin = new System.Windows.Forms.Padding(2);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(75, 19);
-            this.progressBar1.TabIndex = 6;
-            // 
-            // cbb_Level
-            // 
-            this.cbb_Level.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbb_Level.FormattingEnabled = true;
-            this.cbb_Level.Location = new System.Drawing.Point(531, 167);
-            this.cbb_Level.Name = "cbb_Level";
-            this.cbb_Level.Size = new System.Drawing.Size(291, 21);
-            this.cbb_Level.TabIndex = 7;
-            // 
             // txt_name
             // 
-            this.txt_name.Location = new System.Drawing.Point(309, 255);
+            this.txt_name.BackColor = System.Drawing.SystemColors.Control;
+            this.txt_name.Font = new System.Drawing.Font("Stencil", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_name.Location = new System.Drawing.Point(317, 256);
+            this.txt_name.Multiline = true;
             this.txt_name.Name = "txt_name";
-            this.txt_name.Size = new System.Drawing.Size(237, 20);
+            this.txt_name.Size = new System.Drawing.Size(275, 35);
             this.txt_name.TabIndex = 8;
+            this.txt_name.Text = "Name Platzhalter";
+            this.txt_name.Enter += new System.EventHandler(this.txt_name_Enter);
+            this.txt_name.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_name_KeyPress);
             // 
-            // label3
+            // pnl_Link
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(306, 239);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(124, 13);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Trage deinen Namen ein";
+            this.pnl_Link.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.pnl_Link.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnl_Link.BackgroundImage")));
+            this.pnl_Link.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnl_Link.Location = new System.Drawing.Point(335, 169);
+            this.pnl_Link.Name = "pnl_Link";
+            this.pnl_Link.Size = new System.Drawing.Size(68, 78);
+            this.pnl_Link.TabIndex = 10;
+            this.pnl_Link.TabStop = false;
+            this.pnl_Link.Click += new System.EventHandler(this.playerChoiceClick);
+            // 
+            // pnl_Zelda
+            // 
+            this.pnl_Zelda.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnl_Zelda.BackgroundImage")));
+            this.pnl_Zelda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnl_Zelda.Location = new System.Drawing.Point(504, 169);
+            this.pnl_Zelda.Name = "pnl_Zelda";
+            this.pnl_Zelda.Size = new System.Drawing.Size(68, 78);
+            this.pnl_Zelda.TabIndex = 11;
+            this.pnl_Zelda.TabStop = false;
+            this.pnl_Zelda.Click += new System.EventHandler(this.playerChoiceClick);
+            // 
+            // lbl_Level1
+            // 
+            this.lbl_Level1.AutoSize = true;
+            this.lbl_Level1.BackColor = System.Drawing.Color.LightGray;
+            this.lbl_Level1.Font = new System.Drawing.Font("Stencil", 23F);
+            this.lbl_Level1.Location = new System.Drawing.Point(37, 422);
+            this.lbl_Level1.Name = "lbl_Level1";
+            this.lbl_Level1.Size = new System.Drawing.Size(132, 37);
+            this.lbl_Level1.TabIndex = 12;
+            this.lbl_Level1.Text = "Level 1";
+            this.lbl_Level1.Click += new System.EventHandler(this.levelChoiceClick);
+            // 
+            // lbl_Level2
+            // 
+            this.lbl_Level2.AutoSize = true;
+            this.lbl_Level2.Font = new System.Drawing.Font("Stencil", 23F);
+            this.lbl_Level2.Location = new System.Drawing.Point(271, 422);
+            this.lbl_Level2.Name = "lbl_Level2";
+            this.lbl_Level2.Size = new System.Drawing.Size(132, 37);
+            this.lbl_Level2.TabIndex = 13;
+            this.lbl_Level2.Text = "Level 2";
+            this.lbl_Level2.Click += new System.EventHandler(this.levelChoiceClick);
+            // 
+            // lbl_Level3
+            // 
+            this.lbl_Level3.AutoSize = true;
+            this.lbl_Level3.Font = new System.Drawing.Font("Stencil", 23F);
+            this.lbl_Level3.Location = new System.Drawing.Point(497, 422);
+            this.lbl_Level3.Name = "lbl_Level3";
+            this.lbl_Level3.Size = new System.Drawing.Size(132, 37);
+            this.lbl_Level3.TabIndex = 14;
+            this.lbl_Level3.Text = "Level 3";
+            this.lbl_Level3.Click += new System.EventHandler(this.levelChoiceClick);
+            // 
+            // lbl_Level4
+            // 
+            this.lbl_Level4.AutoSize = true;
+            this.lbl_Level4.Font = new System.Drawing.Font("Stencil", 23F);
+            this.lbl_Level4.Location = new System.Drawing.Point(744, 422);
+            this.lbl_Level4.Name = "lbl_Level4";
+            this.lbl_Level4.Size = new System.Drawing.Size(132, 37);
+            this.lbl_Level4.TabIndex = 15;
+            this.lbl_Level4.Text = "Level 4";
+            this.lbl_Level4.Click += new System.EventHandler(this.levelChoiceClick);
             // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(903, 490);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lbl_Level4);
+            this.Controls.Add(this.lbl_Level3);
+            this.Controls.Add(this.lbl_Level2);
+            this.Controls.Add(this.lbl_Level1);
+            this.Controls.Add(this.pnl_Zelda);
+            this.Controls.Add(this.pnl_Link);
             this.Controls.Add(this.txt_name);
-            this.Controls.Add(this.cbb_Level);
-            this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.cbb_Gender);
             this.Controls.Add(this.lbl_Welcome);
             this.Controls.Add(this.btn_Start);
             this.Name = "Menu";
             this.Text = "Menu";
+            ((System.ComponentModel.ISupportInitialize)(this.pnl_Link)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pnl_Zelda)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -147,13 +171,13 @@
 
         private System.Windows.Forms.Button btn_Start;
         private System.Windows.Forms.Label lbl_Welcome;
-        private System.Windows.Forms.ComboBox cbb_Gender;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.ComboBox cbb_Level;
         private System.Windows.Forms.TextBox txt_name;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pnl_Link;
+        private System.Windows.Forms.PictureBox pnl_Zelda;
+        private System.Windows.Forms.Label lbl_Level1;
+        private System.Windows.Forms.Label lbl_Level2;
+        private System.Windows.Forms.Label lbl_Level3;
+        private System.Windows.Forms.Label lbl_Level4;
     }
 }
 
