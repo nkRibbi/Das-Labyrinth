@@ -140,27 +140,6 @@ namespace Das_Labyrinth
             }
         }
 
-        // Simuliere Input
-        // Rechteckige Bahn
-        //static int i = 0;
-        //public void moveRect()
-        //{
-        //    i++;
-        //    switch (i)
-        //    {
-        //        case 120: down = false; right = true;
-        //            break;
-        //        case 240: right = false; up = true;
-        //            break;
-        //        case 360: up = false; left = true;
-        //            break;
-        //        case 480: left = false; down = true; i = 0;
-        //            break;
-        //        default:
-        //            break;
-        //    }
-        //}
-
         // plotFrame Methode initialisiert und definiert das Bild und die Bereiche
         public static void plotFrame(
             Bitmap bitmap, // Bildobjekt laden
@@ -177,7 +156,7 @@ namespace Das_Labyrinth
             e.Graphics.DrawImage(bitmap, x - frame * width, y); // Zieht den Animationsstreifen per Frame (x-Pos des Bildes - Frame * Bildlänge) 
         }
 
-        // Eine Methode zur Kontrolle der Framerate um das Bild langsamer zu machen (klappt nicht so ganz :P)
+        // Eine Methode zur Kontrolle der Framerate um das Bild langsamer zu machen
         static byte timerFrame = 0;
         public static byte getFrame(byte frame, byte min, byte max, byte step)
         {
@@ -195,7 +174,6 @@ namespace Das_Labyrinth
         void UpdateGameLogic()
         {
             moveObject();
-            //debugMode();
         }
 
         // Leinwand Methode die alles grafische darstellt
@@ -227,9 +205,6 @@ namespace Das_Labyrinth
             plotFrame(LinkWalkAnim, 25, 30, figureFrame, xLinkWalkAnim, yLinkWalkAnim, e);
             Color backColor = LinkWalkAnim.GetPixel(1, 1);
             LinkWalkAnim.MakeTransparent(backColor);
-
-            // Moving around some stuff
-            //moveRect();
         }
 
         //InputManager
