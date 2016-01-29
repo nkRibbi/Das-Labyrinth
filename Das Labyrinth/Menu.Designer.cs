@@ -38,13 +38,17 @@ namespace Das_Labyrinth
             this.lbl_Level2 = new System.Windows.Forms.Label();
             this.lbl_Level3 = new System.Windows.Forms.Label();
             this.lbl_Level4 = new System.Windows.Forms.Label();
+            this.lbl_error = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pnl_Link)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnl_Zelda)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_Start
             // 
-            this.btn_Start.Location = new System.Drawing.Point(224, 304);
+            this.btn_Start.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonShadow;
+            this.btn_Start.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Start.Location = new System.Drawing.Point(222, 323);
+            this.btn_Start.Margin = new System.Windows.Forms.Padding(3, 3, 10, 10);
             this.btn_Start.Name = "btn_Start";
             this.btn_Start.Size = new System.Drawing.Size(468, 85);
             this.btn_Start.TabIndex = 0;
@@ -141,11 +145,21 @@ namespace Das_Labyrinth
             this.lbl_Level4.Text = "Level 4";
             this.lbl_Level4.Click += new System.EventHandler(this.levelChoiceClick);
             // 
+            // lbl_error
+            // 
+            this.lbl_error.AutoSize = true;
+            this.lbl_error.Location = new System.Drawing.Point(368, 294);
+            this.lbl_error.Name = "lbl_error";
+            this.lbl_error.Size = new System.Drawing.Size(0, 13);
+            this.lbl_error.TabIndex = 16;
+            this.lbl_error.Visible = false;
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(903, 490);
+            this.Controls.Add(this.lbl_error);
             this.Controls.Add(this.lbl_Level4);
             this.Controls.Add(this.lbl_Level3);
             this.Controls.Add(this.lbl_Level2);
@@ -175,6 +189,7 @@ namespace Das_Labyrinth
         private System.Windows.Forms.Label lbl_Level2;
         private System.Windows.Forms.Label lbl_Level3;
         private System.Windows.Forms.Label lbl_Level4;
+        private System.Windows.Forms.Label lbl_error;
     }
 }
 

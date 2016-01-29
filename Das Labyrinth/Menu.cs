@@ -12,15 +12,19 @@ namespace Das_Labyrinth
 {
     public partial class Menu : Form
     {
+        Bitmap bmp_link = new Bitmap("D:\\Haspel\\Das Labyrinth\\Das Labyrinth\\src\\Link.png");
+        Bitmap bmp_zelda = new Bitmap("D:\\Haspel\\Das Labyrinth\\Das Labyrinth\\src\\Zelda.png");
+
         public Menu()
         {
             InitializeComponent();
 
             //Set BackgroundImage der Panels zu dem dazugehörigen Bild
-            Bitmap bmp_link = new Bitmap("D:\\Haspel\\Das Labyrinth\\Das Labyrinth\\src\\Link.png");
-            Bitmap bmp_zelda = new Bitmap("D:\\Haspel\\Das Labyrinth\\Das Labyrinth\\src\\Zelda.png");
             pnl_Link.BackgroundImage = bmp_link;
             pnl_Zelda.BackgroundImage = bmp_zelda;
+            lbl_error.Text = "Gib zuerst deinen Namen ein!";
+
+
         }
         static string gender = "link";
         public string Gender
@@ -43,9 +47,13 @@ namespace Das_Labyrinth
         //Läd (atm noch) die Form die getestet werden soll und setzt das Level sowie das Geschlecht [TODO]
         private void btn_Start_Click(object sender, EventArgs e)
         {
-            /* Setze Schwierigkeit in abhängikeit des Textes der Combobox und rufe (das Labyrinth, Minispiel) */
-            //Difficulty = setDifficulty();
-            //Gender = cbb_Gender.Text;
+
+            //Abfrage der Textbox wenn der jetzige platzhalter oder nullOrWhiteSpace ist dann leite nicht weiter
+            if (txt_name.Text.ToLower() == "name platzhalter" || String.IsNullOrWhiteSpace(txt_name.Text))
+            {
+                lbl_error.Visible = true;
+                return;
+            }
             Player_name = txt_name.Text;
             //ActionCanvas frm = new ActionCanvas();
             DrachenRechnen frm = new DrachenRechnen();
@@ -123,7 +131,9 @@ namespace Das_Labyrinth
         /* Beim Focus auf die Textbox wird sie leer gemacht */
         private void txt_name_Enter(object sender, EventArgs e)
         {
+            lbl_error.Visible = false;
             txt_name.Text = "";
         }
+
     }
 }

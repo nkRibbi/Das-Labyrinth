@@ -37,6 +37,15 @@
             this.lbl_gender = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lbl_name = new System.Windows.Forms.Label();
+            this.pb_life1 = new System.Windows.Forms.PictureBox();
+            this.pb_life3 = new System.Windows.Forms.PictureBox();
+            this.pb_life2 = new System.Windows.Forms.PictureBox();
+            this.pnl_success = new System.Windows.Forms.Panel();
+            this.lbl_clickToContinue = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_life1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_life3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_life2)).BeginInit();
+            this.pnl_success.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbl_Question
@@ -47,7 +56,6 @@
             this.lbl_Question.Name = "lbl_Question";
             this.lbl_Question.Size = new System.Drawing.Size(0, 40);
             this.lbl_Question.TabIndex = 0;
-            this.lbl_Question.Click += new System.EventHandler(this.lbl_Question_Click);
             // 
             // lbl_AnswerA
             // 
@@ -134,23 +142,79 @@
             this.lbl_name.TabIndex = 9;
             this.lbl_name.Text = "label2";
             // 
+            // pb_life1
+            // 
+            this.pb_life1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pb_life1.Location = new System.Drawing.Point(12, 9);
+            this.pb_life1.Name = "pb_life1";
+            this.pb_life1.Size = new System.Drawing.Size(27, 25);
+            this.pb_life1.TabIndex = 10;
+            this.pb_life1.TabStop = false;
+            // 
+            // pb_life3
+            // 
+            this.pb_life3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pb_life3.Location = new System.Drawing.Point(78, 9);
+            this.pb_life3.Name = "pb_life3";
+            this.pb_life3.Size = new System.Drawing.Size(27, 25);
+            this.pb_life3.TabIndex = 11;
+            this.pb_life3.TabStop = false;
+            // 
+            // pb_life2
+            // 
+            this.pb_life2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pb_life2.Location = new System.Drawing.Point(45, 9);
+            this.pb_life2.Name = "pb_life2";
+            this.pb_life2.Size = new System.Drawing.Size(27, 25);
+            this.pb_life2.TabIndex = 12;
+            this.pb_life2.TabStop = false;
+            // 
+            // pnl_success
+            // 
+            this.pnl_success.Controls.Add(this.lbl_clickToContinue);
+            this.pnl_success.Location = new System.Drawing.Point(-1, 40);
+            this.pnl_success.Name = "pnl_success";
+            this.pnl_success.Size = new System.Drawing.Size(766, 328);
+            this.pnl_success.TabIndex = 13;
+            this.pnl_success.Visible = false;
+            this.pnl_success.Click += new System.EventHandler(this.continue_after_sucess_click);
+            // 
+            // lbl_clickToContinue
+            // 
+            this.lbl_clickToContinue.AutoSize = true;
+            this.lbl_clickToContinue.Location = new System.Drawing.Point(64, 88);
+            this.lbl_clickToContinue.Name = "lbl_clickToContinue";
+            this.lbl_clickToContinue.Size = new System.Drawing.Size(154, 26);
+            this.lbl_clickToContinue.TabIndex = 0;
+            this.lbl_clickToContinue.Text = "Super! \nKlicke hier um weiter zu spielen";
+            this.lbl_clickToContinue.Click += new System.EventHandler(this.continue_after_sucess_click);
+            // 
             // DrachenRechnen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(765, 366);
+            this.Controls.Add(this.pb_life2);
+            this.Controls.Add(this.pb_life3);
+            this.Controls.Add(this.pb_life1);
             this.Controls.Add(this.lbl_name);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.lbl_gender);
             this.Controls.Add(this.lbl_difficulty);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lbl_AnswerD);
             this.Controls.Add(this.lbl_AnswerC);
             this.Controls.Add(this.lbl_AnswerB);
             this.Controls.Add(this.lbl_AnswerA);
             this.Controls.Add(this.lbl_Question);
+            this.Controls.Add(this.pnl_success);
             this.Name = "DrachenRechnen";
             this.Text = "DrachenRechnen";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.PaintSuccess);
+            ((System.ComponentModel.ISupportInitialize)(this.pb_life1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_life3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_life2)).EndInit();
+            this.pnl_success.ResumeLayout(false);
+            this.pnl_success.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -167,5 +231,10 @@
         private System.Windows.Forms.Label lbl_gender;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lbl_name;
+        private System.Windows.Forms.PictureBox pb_life1;
+        private System.Windows.Forms.PictureBox pb_life3;
+        private System.Windows.Forms.PictureBox pb_life2;
+        private System.Windows.Forms.Panel pnl_success;
+        private System.Windows.Forms.Label lbl_clickToContinue;
     }
 }

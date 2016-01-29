@@ -18,6 +18,12 @@ namespace Das_Labyrinth
         int result, number_one, number_two, answer_A, answer_B, answer_C, answer_D;
         string player_name;
         System.Timers.Timer a = new System.Timers.Timer();
+        Bitmap bmp_heart_full = new Bitmap("D:\\Haspel\\Das Labyrinth\\Das Labyrinth\\src\\heart_full.png");
+        Bitmap bmp_heart_empty = new Bitmap("D:\\Haspel\\Das Labyrinth\\Das Labyrinth\\src\\heart_empty.png");
+
+
+        Panel pnl_Popup = new Panel();
+        Label success_text = new Label();
 
         public DrachenRechnen()
         {
@@ -26,8 +32,12 @@ namespace Das_Labyrinth
             difficulty = Menu_Frame.Difficulty;
             string gender = Menu_Frame.Gender;
             player_name = Menu_Frame.Player_name;
+            pb_life1.BackgroundImage = bmp_heart_full;
+            pb_life2.BackgroundImage = bmp_heart_full;
+            pb_life3.BackgroundImage = bmp_heart_full;
 
 
+            
             a.Interval = 1000 / 30;                                        // Intervall der Ausführung der A_Elapsed-Methode
             a.Elapsed += A_Elapsed;
 
@@ -77,11 +87,7 @@ namespace Das_Labyrinth
                 case 3: lbl_AnswerD.Text = result.ToString(); break;
             }
         }
-        private void lbl_Question_Click(object sender, EventArgs e)
-        {
-            start();
-        }
-
+        
         /* Vergleiche den Wert des angeklickten Labels mit der richtigen Antwort*/
         public void checkAnswer_Click(object sender, EventArgs e)
         {
@@ -91,21 +97,35 @@ namespace Das_Labyrinth
 
             if (result == answer)
             {
-                lbl_Question.Text = "Richtige Antwort" + player_name;
+                lbl_Question.Text = "Richtige Antwort " + player_name;
                 a.Enabled = true;
-                
+                this.Controls.SetChildIndex(pnl_success, 0);
+                pnl_success.Visible = true;
             }
             else
             {
                 lbl_Question.Text = "Falsche Antwort";
+                if (pb_life1.BackgroundImage == bmp_heart_full)
+                    pb_life1.BackgroundImage = bmp_heart_empty;
+                else if (pb_life2.BackgroundImage == bmp_heart_full)
+                    pb_life2.BackgroundImage = bmp_heart_empty;
+                else
+                {
+                    pb_life3.BackgroundImage = bmp_heart_empty;
+                    this.Close();
+                    MessageBox.Show("Du hast keine Leben mehr");
+                }
+                start();
             }
 
         }
         int i = 0;
         public void successAnimation()
         {
-            
-            i++;
+            if (i < 100)
+                i++;
+            else
+                a.Enabled = false;
         }
         public void Repaint()
         {
@@ -131,8 +151,14 @@ namespace Das_Labyrinth
         private void PaintSuccess(object sender, PaintEventArgs e)
         {
             //e.Graphics.DrawImage(image, Point)
-            e.Graphics.DrawRectangle(Pens.Black, 0 + i, 0 + i, 0 + i, 0 + i);
+            e.Graphics.DrawRectangle(Pens.Black, 100, 400, 0 - i, 0 + i);
             successAnimation();
+        }
+
+        public void continue_after_sucess_click(object sender, EventArgs e)
+        {
+            pnl_success.Visible = false;
+            start();
         }
     }
 }
