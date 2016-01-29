@@ -32,14 +32,10 @@ namespace Das_Labyrinth
             difficulty = Menu_Frame.Difficulty;
             string gender = Menu_Frame.Gender;
             player_name = Menu_Frame.Player_name;
+
             pb_life1.BackgroundImage = bmp_heart_full;
             pb_life2.BackgroundImage = bmp_heart_full;
             pb_life3.BackgroundImage = bmp_heart_full;
-
-
-            
-            a.Interval = 1000 / 30;                                        // Intervall der Ausführung der A_Elapsed-Methode
-            a.Elapsed += A_Elapsed;
 
             lbl_difficulty.Text = "Level " + difficulty;
             lbl_gender.Text = gender;
@@ -62,7 +58,7 @@ namespace Das_Labyrinth
                 case 0: result = number_one + number_two; c_operand = '+'; break;
                 case 1: result = number_one - number_two; c_operand = '-'; break;
                 case 2: result = number_one * number_two; c_operand = '*'; break;
-                //case 3: result = number_one / number_two; c_operand = '/'; break;
+                case 3: result = number_one + number_two; c_operand = '4'; break;
             }
             lbl_Question.Text = number_one + " " + c_operand + " " + number_two;
 
@@ -79,6 +75,7 @@ namespace Das_Labyrinth
 
             //ersetze ein AntwortFeld mit der richtigen Antwort
             int decide = rnd.Next(0, 4);
+            Console.WriteLine(decide);
             switch (decide)
             {
                 case 0: lbl_AnswerA.Text = result.ToString(); break;
@@ -95,16 +92,20 @@ namespace Das_Labyrinth
             int answer = Convert.ToInt32(label_clicked.Text);
             int result = this.result;
 
+            //abfrage für eine Richtige antwort
             if (result == answer)
             {
                 lbl_Question.Text = "Richtige Antwort " + player_name;
-                a.Enabled = true;
                 this.Controls.SetChildIndex(pnl_success, 0);
                 pnl_success.Visible = true;
             }
+
+            //Abfrage für eine Falsche Antwort
             else
             {
                 lbl_Question.Text = "Falsche Antwort";
+
+                // Verliere das jeweilige nächste Lebel, wenn alle drei Leben verloren sind Schließe das MiniSpiel
                 if (pb_life1.BackgroundImage == bmp_heart_full)
                     pb_life1.BackgroundImage = bmp_heart_empty;
                 else if (pb_life2.BackgroundImage == bmp_heart_full)
@@ -119,42 +120,7 @@ namespace Das_Labyrinth
             }
 
         }
-        int i = 0;
-        public void successAnimation()
-        {
-            if (i < 100)
-                i++;
-            else
-                a.Enabled = false;
-        }
-        public void Repaint()
-        {
-            if (this.InvokeRequired)
-            {
-                try
-                {
-                    this.Invoke(new Action(Repaint));
-                }
-                catch (InvalidOperationException)
-                { }
-            }
-            else
-            {
-                this.Refresh();
-            }
-        }
-        public void A_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
-        {
-            ActionCanvas canvas = new ActionCanvas();
-            Repaint();
-        }
-        private void PaintSuccess(object sender, PaintEventArgs e)
-        {
-            //e.Graphics.DrawImage(image, Point)
-            e.Graphics.DrawRectangle(Pens.Black, 100, 400, 0 - i, 0 + i);
-            successAnimation();
-        }
-
+        /* Click Event des Panels, welches nach einer richtigen Antwort erscheint */
         public void continue_after_sucess_click(object sender, EventArgs e)
         {
             pnl_success.Visible = false;

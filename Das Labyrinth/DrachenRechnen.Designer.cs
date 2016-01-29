@@ -209,7 +209,6 @@
             this.Controls.Add(this.pnl_success);
             this.Name = "DrachenRechnen";
             this.Text = "DrachenRechnen";
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.PaintSuccess);
             ((System.ComponentModel.ISupportInitialize)(this.pb_life1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_life3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_life2)).EndInit();
