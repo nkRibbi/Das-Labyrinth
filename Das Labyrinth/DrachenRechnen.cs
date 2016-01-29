@@ -28,6 +28,8 @@ namespace Das_Labyrinth
         public DrachenRechnen()
         {
             InitializeComponent();
+            //this.Controls.SetChildIndex(panel1, 0);
+
             //setze den Schwierigkeitsgrad und das Geschlecht
             difficulty = Menu_Frame.Difficulty;
             string gender = Menu_Frame.Gender;
@@ -36,7 +38,6 @@ namespace Das_Labyrinth
             pb_life1.BackgroundImage = bmp_heart_full;
             pb_life2.BackgroundImage = bmp_heart_full;
             pb_life3.BackgroundImage = bmp_heart_full;
-
             lbl_difficulty.Text = "Level " + difficulty;
             lbl_gender.Text = gender;
             lbl_name.Text = player_name;
@@ -46,9 +47,7 @@ namespace Das_Labyrinth
         {
             Random rnd = new Random();
             char c_operand = '+';
-            a.Enabled = false;
-
-
+            
             //generiere operanten sowie antwortmöglichkeiten
             number_one = rnd.Next(0, 10);
             number_two = rnd.Next(0, 10);
@@ -61,7 +60,7 @@ namespace Das_Labyrinth
                 case 3: result = number_one + number_two; c_operand = '4'; break;
             }
             lbl_Question.Text = number_one + " " + c_operand + " " + number_two;
-
+            // [TODO]
             answer_A = rnd.Next(0, 20);
             answer_B = rnd.Next(0, 20);
             answer_C = rnd.Next(0, 20);
@@ -75,7 +74,6 @@ namespace Das_Labyrinth
 
             //ersetze ein AntwortFeld mit der richtigen Antwort
             int decide = rnd.Next(0, 4);
-            Console.WriteLine(decide);
             switch (decide)
             {
                 case 0: lbl_AnswerA.Text = result.ToString(); break;
@@ -88,6 +86,7 @@ namespace Das_Labyrinth
         /* Vergleiche den Wert des angeklickten Labels mit der richtigen Antwort*/
         public void checkAnswer_Click(object sender, EventArgs e)
         {
+            Panel pnl_clicked = sender as Panel;
             Label label_clicked = sender as Label;
             int answer = Convert.ToInt32(label_clicked.Text);
             int result = this.result;
@@ -96,7 +95,7 @@ namespace Das_Labyrinth
             if (result == answer)
             {
                 lbl_Question.Text = "Richtige Antwort " + player_name;
-                this.Controls.SetChildIndex(pnl_success, 0);
+                this.Controls.SetChildIndex(pnl_success, 1);
                 pnl_success.Visible = true;
             }
 
@@ -118,7 +117,6 @@ namespace Das_Labyrinth
                 }
                 start();
             }
-
         }
         /* Click Event des Panels, welches nach einer richtigen Antwort erscheint */
         public void continue_after_sucess_click(object sender, EventArgs e)
@@ -126,5 +124,18 @@ namespace Das_Labyrinth
             pnl_success.Visible = false;
             start();
         }
+        //Hover fuer die vier Antwort Moeglichkeiten
+        private void pnl_AnswerA_MouseEnter(object sender, EventArgs e)
+        {
+            Label lbl = sender as Label;
+            lbl.BackColor = Color.FromArgb(211, 211, 211);
+        }
+        private void pnl_AnswerA_MouseLeave(object sender, EventArgs e)
+        {
+            Label lbl = sender as Label;
+            lbl.BackColor = Color.FromArgb(240, 240, 240);
+        }
+
+       
     }
 }

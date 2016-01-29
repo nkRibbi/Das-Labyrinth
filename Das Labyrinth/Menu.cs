@@ -23,8 +23,6 @@ namespace Das_Labyrinth
             pnl_Link.BackgroundImage = bmp_link;
             pnl_Zelda.BackgroundImage = bmp_zelda;
             lbl_error.Text = "Gib zuerst deinen Namen ein!";
-
-
         }
         static string gender = "link";
         public string Gender
@@ -78,7 +76,6 @@ namespace Das_Labyrinth
                     Gender = "link";
                     break;
             }
-            player.BackColor = Color.FromArgb(211, 211, 211);
         }
 
         /* Selbe Logik wie oben. Ein Label wird ausgewählt und farblich hinterlegt, die andern drei werden auf die Hintergrundfarbe der Form gesetzt*/

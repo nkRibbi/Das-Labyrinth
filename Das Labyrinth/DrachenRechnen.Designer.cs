@@ -30,7 +30,6 @@
         {
             this.lbl_Question = new System.Windows.Forms.Label();
             this.lbl_AnswerA = new System.Windows.Forms.Label();
-            this.lbl_AnswerB = new System.Windows.Forms.Label();
             this.lbl_AnswerC = new System.Windows.Forms.Label();
             this.lbl_AnswerD = new System.Windows.Forms.Label();
             this.lbl_difficulty = new System.Windows.Forms.Label();
@@ -42,6 +41,7 @@
             this.pb_life2 = new System.Windows.Forms.PictureBox();
             this.pnl_success = new System.Windows.Forms.Panel();
             this.lbl_clickToContinue = new System.Windows.Forms.Label();
+            this.lbl_AnswerB = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pb_life1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_life3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_life2)).BeginInit();
@@ -59,51 +59,47 @@
             // 
             // lbl_AnswerA
             // 
-            this.lbl_AnswerA.AutoSize = true;
             this.lbl_AnswerA.Font = new System.Drawing.Font("Verdana", 23.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_AnswerA.Location = new System.Drawing.Point(82, 175);
+            this.lbl_AnswerA.Location = new System.Drawing.Point(60, 114);
             this.lbl_AnswerA.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_AnswerA.Name = "lbl_AnswerA";
-            this.lbl_AnswerA.Size = new System.Drawing.Size(171, 38);
+            this.lbl_AnswerA.Padding = new System.Windows.Forms.Padding(20);
+            this.lbl_AnswerA.Size = new System.Drawing.Size(150, 80);
             this.lbl_AnswerA.TabIndex = 1;
-            this.lbl_AnswerA.Text = "Antwort A";
+            this.lbl_AnswerA.Text = "44";
+            this.lbl_AnswerA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl_AnswerA.Click += new System.EventHandler(this.checkAnswer_Click);
-            // 
-            // lbl_AnswerB
-            // 
-            this.lbl_AnswerB.AutoSize = true;
-            this.lbl_AnswerB.Font = new System.Drawing.Font("Verdana", 23.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_AnswerB.Location = new System.Drawing.Point(513, 175);
-            this.lbl_AnswerB.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbl_AnswerB.Name = "lbl_AnswerB";
-            this.lbl_AnswerB.Size = new System.Drawing.Size(171, 38);
-            this.lbl_AnswerB.TabIndex = 2;
-            this.lbl_AnswerB.Text = "Antwort B";
-            this.lbl_AnswerB.Click += new System.EventHandler(this.checkAnswer_Click);
+            this.lbl_AnswerA.MouseEnter += new System.EventHandler(this.pnl_AnswerA_MouseEnter);
+            this.lbl_AnswerA.MouseLeave += new System.EventHandler(this.pnl_AnswerA_MouseLeave);
             // 
             // lbl_AnswerC
             // 
-            this.lbl_AnswerC.AutoSize = true;
             this.lbl_AnswerC.Font = new System.Drawing.Font("Verdana", 23.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_AnswerC.Location = new System.Drawing.Point(82, 239);
+            this.lbl_AnswerC.Location = new System.Drawing.Point(232, 192);
             this.lbl_AnswerC.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_AnswerC.Name = "lbl_AnswerC";
-            this.lbl_AnswerC.Size = new System.Drawing.Size(172, 38);
+            this.lbl_AnswerC.Size = new System.Drawing.Size(150, 80);
             this.lbl_AnswerC.TabIndex = 3;
-            this.lbl_AnswerC.Text = "Antwort C";
+            this.lbl_AnswerC.Text = "210";
+            this.lbl_AnswerC.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl_AnswerC.Click += new System.EventHandler(this.checkAnswer_Click);
+            this.lbl_AnswerC.MouseEnter += new System.EventHandler(this.pnl_AnswerA_MouseEnter);
+            this.lbl_AnswerC.MouseLeave += new System.EventHandler(this.pnl_AnswerA_MouseLeave);
             // 
             // lbl_AnswerD
             // 
-            this.lbl_AnswerD.AutoSize = true;
             this.lbl_AnswerD.Font = new System.Drawing.Font("Verdana", 23.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_AnswerD.Location = new System.Drawing.Point(512, 239);
+            this.lbl_AnswerD.Location = new System.Drawing.Point(60, 192);
             this.lbl_AnswerD.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_AnswerD.Name = "lbl_AnswerD";
-            this.lbl_AnswerD.Size = new System.Drawing.Size(174, 38);
+            this.lbl_AnswerD.Padding = new System.Windows.Forms.Padding(20);
+            this.lbl_AnswerD.Size = new System.Drawing.Size(150, 80);
             this.lbl_AnswerD.TabIndex = 4;
-            this.lbl_AnswerD.Text = "Antwort D";
+            this.lbl_AnswerD.Text = "44";
+            this.lbl_AnswerD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl_AnswerD.Click += new System.EventHandler(this.checkAnswer_Click);
+            this.lbl_AnswerD.MouseEnter += new System.EventHandler(this.pnl_AnswerA_MouseEnter);
+            this.lbl_AnswerD.MouseLeave += new System.EventHandler(this.pnl_AnswerA_MouseLeave);
             // 
             // lbl_difficulty
             // 
@@ -172,9 +168,9 @@
             // pnl_success
             // 
             this.pnl_success.Controls.Add(this.lbl_clickToContinue);
-            this.pnl_success.Location = new System.Drawing.Point(-1, 40);
+            this.pnl_success.Location = new System.Drawing.Point(576, 316);
             this.pnl_success.Name = "pnl_success";
-            this.pnl_success.Size = new System.Drawing.Size(766, 328);
+            this.pnl_success.Size = new System.Drawing.Size(177, 38);
             this.pnl_success.TabIndex = 13;
             this.pnl_success.Visible = false;
             this.pnl_success.Click += new System.EventHandler(this.continue_after_sucess_click);
@@ -182,12 +178,27 @@
             // lbl_clickToContinue
             // 
             this.lbl_clickToContinue.AutoSize = true;
-            this.lbl_clickToContinue.Location = new System.Drawing.Point(64, 88);
+            this.lbl_clickToContinue.Location = new System.Drawing.Point(13, 8);
             this.lbl_clickToContinue.Name = "lbl_clickToContinue";
             this.lbl_clickToContinue.Size = new System.Drawing.Size(154, 26);
             this.lbl_clickToContinue.TabIndex = 0;
             this.lbl_clickToContinue.Text = "Super! \nKlicke hier um weiter zu spielen";
             this.lbl_clickToContinue.Click += new System.EventHandler(this.continue_after_sucess_click);
+            // 
+            // lbl_AnswerB
+            // 
+            this.lbl_AnswerB.Font = new System.Drawing.Font("Verdana", 23.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_AnswerB.Location = new System.Drawing.Point(232, 114);
+            this.lbl_AnswerB.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_AnswerB.Name = "lbl_AnswerB";
+            this.lbl_AnswerB.Padding = new System.Windows.Forms.Padding(20);
+            this.lbl_AnswerB.Size = new System.Drawing.Size(150, 80);
+            this.lbl_AnswerB.TabIndex = 2;
+            this.lbl_AnswerB.Text = "55";
+            this.lbl_AnswerB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_AnswerB.Click += new System.EventHandler(this.checkAnswer_Click);
+            this.lbl_AnswerB.MouseEnter += new System.EventHandler(this.pnl_AnswerA_MouseEnter);
+            this.lbl_AnswerB.MouseLeave += new System.EventHandler(this.pnl_AnswerA_MouseLeave);
             // 
             // DrachenRechnen
             // 
@@ -201,12 +212,12 @@
             this.Controls.Add(this.lbl_gender);
             this.Controls.Add(this.lbl_difficulty);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.lbl_AnswerD);
-            this.Controls.Add(this.lbl_AnswerC);
-            this.Controls.Add(this.lbl_AnswerB);
-            this.Controls.Add(this.lbl_AnswerA);
             this.Controls.Add(this.lbl_Question);
             this.Controls.Add(this.pnl_success);
+            this.Controls.Add(this.lbl_AnswerA);
+            this.Controls.Add(this.lbl_AnswerB);
+            this.Controls.Add(this.lbl_AnswerC);
+            this.Controls.Add(this.lbl_AnswerD);
             this.Name = "DrachenRechnen";
             this.Text = "DrachenRechnen";
             ((System.ComponentModel.ISupportInitialize)(this.pb_life1)).EndInit();
@@ -223,7 +234,6 @@
 
         private System.Windows.Forms.Label lbl_Question;
         private System.Windows.Forms.Label lbl_AnswerA;
-        private System.Windows.Forms.Label lbl_AnswerB;
         private System.Windows.Forms.Label lbl_AnswerC;
         private System.Windows.Forms.Label lbl_AnswerD;
         private System.Windows.Forms.Label lbl_difficulty;
@@ -235,5 +245,6 @@
         private System.Windows.Forms.PictureBox pb_life2;
         private System.Windows.Forms.Panel pnl_success;
         private System.Windows.Forms.Label lbl_clickToContinue;
+        private System.Windows.Forms.Label lbl_AnswerB;
     }
 }
