@@ -19,17 +19,19 @@ namespace Das_Labyrinth
         public bool Right { get; set; }
         public bool Up { get; set; }
         public bool Down { get; set; }
+        public bool D { get; set; }
 
         // Inizialisiere Bild (komisch wieso ich das hier machen muss und nicht in der eigentlichen funktion dafür...)
         //Bitmap LinkWalkAnim = new Bitmap("E:\\Das-Labyrinth\\Grundgerüst\\MainMenu\\MainMenu\\src\\link_move_anim.png");
         //[TP]
         Bitmap LinkWalkAnim = new Bitmap("C:\\Users\\Radiac\\Desktop\\Grundgerüst\\MainMenu\\MainMenu\\src\\link_move_anim.png");
+        Bitmap Megaman = new Bitmap("C:\\Users\\Radiac\\Desktop\\Grundgerüst\\MainMenu\\MainMenu\\src\\megaman.png");
         //[AK]
         //Bitmap LinkWalkAnim = new Bitmap("D:\\Haspel\\Das Labyrinth\\Das Labyrinth\\src\\link_move_anim.png");
 
         static byte figureFrame = 0;
 
-        Boolean isDebug = true;
+        Boolean isDebug = false;
         Boolean isStart = true;
 
         public ActionCanvas()
@@ -170,6 +172,37 @@ namespace Das_Labyrinth
             return frame;
         }
 
+        /* Pixelgenaue Collisionsprüfung (int) über Punkte
+        Wir definieren 4 Punkte (Koordinaten). Eine eindeutige Kollision liegt dann vor,
+        wenn alle 8 Bedingungen der if-Abfrage erfüllt sind.
+        */
+        public static bool checkCollision(
+            int x1, int y1, // Rechteck 1: Punkt links oben
+            int x2, int y2, // Rechteck 1: Punkt rechts unten
+            int x3, int y3, // Rechteck 2: Punkt links oben
+            int x4, int y4  // Rechteck 2: Punkt rechts unten
+            )
+        {
+            // Ist Bedingung erfüllt dann true = Kollision
+            if (x2 >= x3 && x4 >= x1 && y2 >= y3 && y4 >= y1)
+            { return true; }
+            else return false;
+        }
+        /* Pixelgenaue Collisionsprüfung (int) anhand von Rechtecken (Flächen)
+        Erleichtert jetzt die Kollisionsbereiche zu zeichnen. Benutzen wir um Rechtecke um Objekte zu definieren,
+        die eine Collisionsabfrage starten und sobald diese sich berühren ein true zurück werfen.
+        */
+        public static bool checkColRect(
+            int x1, int y1, int w1, int h1, // Rechteck 1
+            int x3, int y3, int w2, int h2 // Rechteck 2
+            )
+        {
+            //Definition der Rechtecke (Bounding Box)
+            int x2 = x1 + w1, y2 = y1 + h1; // Rechteck1: Punkt rechts unten!
+            int x4 = x3 + w2, y4 = y3 + h2; // Rechteck 2: Punkt rechts unten!
+            return checkCollision(x1, y1, x2, y2, x3, y3, x4, y4);
+        }
+
         // Spiel-Logik die etwas verlangsamt ausgeführt wird gegenüber dem Zeichnen (kontrolliert)
         void UpdateGameLogic()
         {
@@ -201,12 +234,36 @@ namespace Das_Labyrinth
             */
 
             //e.Graphics.DrawImage(LinkWalkAnim, 0, 0, LinkWalkAnim.Width, LinkWalkAnim.Height);
+            int megax = 100;
+            int megay = 100;
+
+            bool col = checkColRect(
+             xLinkWalkAnim + 2, yLinkWalkAnim + 1, 25, 30,
+            megax, megay, Megaman.Width, Megaman.Height);
+            //Console.WriteLine("isCollision " + col);
+
+            if (isDebug)
+            {
+                // Collisionsrects for Testing
+                Pen blackPen = new Pen(Color.Black, 3);
+                // LINK
+                e.Graphics.DrawRectangle(Pens.Red, xLinkWalkAnim + 2, yLinkWalkAnim + 1, 25, 30);
+                //MEGAMAN
+                e.Graphics.DrawRectangle(Pens.Red, megax, megay, Megaman.Width, Megaman.Height);
+                String drawString = ("Collision: " +col);
+                Font drawFont = new Font("Arial", 8);
+                SolidBrush drawBrush = new SolidBrush(Color.Red);
+                RectangleF drawRect = new RectangleF(xLinkWalkAnim - 10, yLinkWalkAnim + 30, 100, 20);
+                e.Graphics.DrawString(drawString, drawFont, drawBrush, drawRect);
+            }
+            e.Graphics.DrawImage(Megaman, megax, megay, Megaman.Width, Megaman.Height);
             // plotMethode zeichnen
             plotFrame(LinkWalkAnim, 25, 30, figureFrame, xLinkWalkAnim, yLinkWalkAnim, e);
-            Color backColor = LinkWalkAnim.GetPixel(1, 1);
-            LinkWalkAnim.MakeTransparent(backColor);
+                Color backColor = LinkWalkAnim.GetPixel(1, 1);
+                LinkWalkAnim.MakeTransparent(backColor);
         }
-
+        // switch variable
+        public int sw = 0;
         //InputManager
         private void ActionCanvas_KeyDown(object sender, KeyEventArgs e)
         {
@@ -223,6 +280,13 @@ namespace Das_Labyrinth
                     break;
                 case Keys.Down:
                     Down = true;
+                    break;
+                // Debugmode switch per key
+                case Keys.D:
+                    sw += 1;
+                    if (sw % 2 == 0)
+                        isDebug = false;
+                    else isDebug = true;
                     break;
             }
         }
