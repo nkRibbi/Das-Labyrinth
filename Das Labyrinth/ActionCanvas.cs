@@ -99,22 +99,22 @@ namespace Das_Labyrinth
             if (up)
             {
                 yLinkWalkAnim -= speedObject;
-                figureFrame = getFrame(figureFrame, (byte)14, (byte)20, (byte)4);
+                figureFrame = helper.getFrame(figureFrame, (byte)14, (byte)20, (byte)4);
             }
             if (down)
             {
                 yLinkWalkAnim += speedObject;
-                figureFrame = getFrame(figureFrame, (byte)21, (byte)27, (byte)4);
+                figureFrame = helper.getFrame(figureFrame, (byte)21, (byte)27, (byte)4);
             }
             if (left)
             {
                 xLinkWalkAnim -= speedObject;
-                figureFrame = getFrame(figureFrame, (byte)7, (byte)13, (byte)4);
+                figureFrame = helper.getFrame(figureFrame, (byte)7, (byte)13, (byte)4);
             }
             if (right)
             {
                 xLinkWalkAnim += speedObject;
-                figureFrame = getFrame(figureFrame, (byte)0, (byte)6, (byte)4);
+                figureFrame = helper.getFrame(figureFrame, (byte)0, (byte)6, (byte)4);
             }
         }
 
@@ -140,34 +140,34 @@ namespace Das_Labyrinth
         }
 
         // plotFrame Methode initialisiert und definiert das Bild und die Bereiche
-        public void plotFrame(
-            Bitmap bitmap, // Bildobjekt laden
-            int width, // Bildlänge eines Frames
-            int height, // Bildhöhe eines Frames
-            int frame, // Frame zur kontrolle der Geschwindigkeit
-            int x, //Position des Bild x
-            int y, // Position des Bild y
-            PaintEventArgs e
-            )
-        {
-            Rectangle clipRect = new Rectangle(x, y, width, height); // Clippingbereich definieren
-            e.Graphics.SetClip(clipRect); // Clippen
-            e.Graphics.DrawImage(bitmap, x - frame * width, y); // Zieht den Animationsstreifen per Frame (x-Pos des Bildes - Frame * Bildlänge) 
-        }
+        //public void plotFrame(
+        //    Bitmap bitmap, // Bildobjekt laden
+        //    int width, // Bildlänge eines Frames
+        //    int height, // Bildhöhe eines Frames
+        //    int frame, // Frame zur kontrolle der Geschwindigkeit
+        //    int x, //Position des Bild x
+        //    int y, // Position des Bild y
+        //    PaintEventArgs e
+        //    )
+        //{
+        //    Rectangle clipRect = new Rectangle(x, y, width, height); // Clippingbereich definieren
+        //    e.Graphics.SetClip(clipRect); // Clippen
+        //    e.Graphics.DrawImage(bitmap, x - frame * width, y); // Zieht den Animationsstreifen per Frame (x-Pos des Bildes - Frame * Bildlänge) 
+        //}
 
-        // Eine Methode zur Kontrolle der Framerate um das Bild langsamer zu machen (klappt nicht so ganz :P)
-        static byte timerFrame = 0;
-        public byte getFrame(byte frame, byte min, byte max, byte step)
-        {
-            if (frame < min || frame > max) frame = min;
-            if (step < 1) step = 1;
-            if (timerFrame % step == 0)
-            {
-                frame++;
-                if (frame > max) frame = (byte)min;
-            }
-            return frame;
-        }
+        //// Eine Methode zur Kontrolle der Framerate um das Bild langsamer zu machen (klappt nicht so ganz :P)
+        //static byte timerFrame = 0;
+        //public byte getFrame(byte frame, byte min, byte max, byte step)
+        //{
+        //    if (frame < min || frame > max) frame = min;
+        //    if (step < 1) step = 1;
+        //    if (timerFrame % step == 0)
+        //    {
+        //        frame++;
+        //        if (frame > max) frame = (byte)min;
+        //    }
+        //    return frame;
+        //}
 
         // Spiel-Logik die etwas verlangsamt ausgeführt wird gegenüber dem Zeichnen (kontrolliert)
         void UpdateGameLogic()
@@ -201,7 +201,7 @@ namespace Das_Labyrinth
 
             //e.Graphics.DrawImage(LinkWalkAnim, 0, 0, LinkWalkAnim.Width, LinkWalkAnim.Height);
             // plotMethode zeichnen
-            plotFrame(LinkWalkAnim, 25, 30, figureFrame, xFigure, yFigure, e);
+            helper.plotFrame(LinkWalkAnim, 25, 30, figureFrame, xFigure, yFigure, e);
             Color backColor = LinkWalkAnim.GetPixel(1, 1);
             LinkWalkAnim.MakeTransparent(backColor);
 

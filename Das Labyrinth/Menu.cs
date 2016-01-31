@@ -85,7 +85,7 @@ namespace Das_Labyrinth
             {
                 // Hier wird nun die Logik des Spiels vorwärts getrieben, bzw. das vom Frame erhöhen
                 yLinkWalkAnim += speedObject;
-                figureFrame = frmcanvas.getFrame(figureFrame, (byte)21, (byte)27, (byte)4);
+                figureFrame = frm.getFrame(figureFrame, (byte)21, (byte)27, (byte)4);
                 lastUpdate = DateTime.Now; // Zuletzt updated = Jetzt
             }
             this.UIThread(delegate
