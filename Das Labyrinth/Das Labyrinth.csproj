@@ -50,6 +50,7 @@
     <Compile Include="ActionCanvas.Designer.cs">
       <DependentUpon>ActionCanvas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Animation.cs" />
     <Compile Include="DrachenRechnen.cs">
       <SubType>Form</SubType>
     </Compile>

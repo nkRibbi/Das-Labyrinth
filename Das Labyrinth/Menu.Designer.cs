@@ -83,7 +83,7 @@ namespace Das_Labyrinth
             // 
             this.pnl_Link.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
             this.pnl_Link.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnl_Link.Location = new System.Drawing.Point(335, 169);
+            this.pnl_Link.Location = new System.Drawing.Point(168, 178);
             this.pnl_Link.Name = "pnl_Link";
             this.pnl_Link.Size = new System.Drawing.Size(68, 78);
             this.pnl_Link.TabIndex = 10;
@@ -171,6 +171,7 @@ namespace Das_Labyrinth
             this.Controls.Add(this.btn_Start);
             this.Name = "Menu";
             this.Text = "Menu";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Menu_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.pnl_Link)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnl_Zelda)).EndInit();
             this.ResumeLayout(false);

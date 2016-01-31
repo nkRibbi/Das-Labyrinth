@@ -23,9 +23,10 @@ namespace Das_Labyrinth
         static int xFigure = 50;
         static int yFigure = 10;
         static byte figureFrame = 0;
-
+        Animation helper = new Animation();
         Boolean isDebug = true;
         Boolean isStart = true;
+        public System.Timers.Timer a = new System.Timers.Timer();      // Neues Timer-Objekt
 
         public ActionCanvas()
         {
@@ -43,7 +44,6 @@ namespace Das_Labyrinth
             // Wichtig! Nach dem Laden des Bildes
             // Erstellt Form unabhängigen Timer
 
-            System.Timers.Timer a = new System.Timers.Timer();      // Neues Timer-Objekt
             a.Interval = 1000 / 30;                                        // Intervall der Ausführung der A_Elapsed-Methode
             a.Elapsed += A_Elapsed;
             a.Enabled = true;
@@ -67,9 +67,9 @@ namespace Das_Labyrinth
 
         DateTime lastUpdate = DateTime.MinValue; // Letzer Zeitpunkt des Updates von Game-Logik
         TimeSpan updateInterval = new TimeSpan(0, 0, 0, 0, 66); // Wie oft soll die Game-Logik aktualisiert werden (50ms)
-       
+
         // Loop-Methode die alle x ms aufgerufen wird (siehe Intervall System-Timers)
-        private void A_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        public void A_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             if (isStart)
             {
@@ -82,42 +82,24 @@ namespace Das_Labyrinth
                 UpdateGameLogic();
                 lastUpdate = DateTime.Now; // Zuletzt updated = Jetzt
             }
-
-            // Immer Zeichnen
-            Repaint(); // Ruft Methode zum übermalen der aktuellen Leinwand auf
-            // Colli Logik hier rein weil keine framesperre
-        }
-
-        // Refresh Methode zur Bereinigung der Leinwand
-        public void Repaint()
-        {
-            if (this.InvokeRequired)
-            {
-                try
-                {
-                    this.Invoke(new Action(Repaint));
-                }
-                catch (InvalidOperationException)
-                { }
-            }
-            else
+            this.UIThread(delegate
             {
                 this.Refresh();
-            }
+            });
         }
-
+        // Refresh Methode zur Bereinigung der Leinwand
         // Bewegung / Animation Methoden
         int xLinkWalkAnim = 10;
         int yLinkWalkAnim = 10;
 
         static int speedObject = 1;
         static Boolean up = false, down = true, left = false, right = false;
-            public void moveObject()
+        public void moveObject()
         {
             if (up)
             {
                 yLinkWalkAnim -= speedObject;
-                figureFrame = getFrame(figureFrame, (byte)14, (byte)20,(byte)4);
+                figureFrame = getFrame(figureFrame, (byte)14, (byte)20, (byte)4);
             }
             if (down)
             {
@@ -158,7 +140,7 @@ namespace Das_Labyrinth
         }
 
         // plotFrame Methode initialisiert und definiert das Bild und die Bereiche
-        public static void plotFrame (
+        public void plotFrame(
             Bitmap bitmap, // Bildobjekt laden
             int width, // Bildlänge eines Frames
             int height, // Bildhöhe eines Frames
@@ -166,21 +148,23 @@ namespace Das_Labyrinth
             int x, //Position des Bild x
             int y, // Position des Bild y
             PaintEventArgs e
-            ) {
+            )
+        {
             Rectangle clipRect = new Rectangle(x, y, width, height); // Clippingbereich definieren
             e.Graphics.SetClip(clipRect); // Clippen
-            e.Graphics.DrawImage(bitmap, x-frame*width, y); // Zieht den Animationsstreifen per Frame (x-Pos des Bildes - Frame * Bildlänge) 
+            e.Graphics.DrawImage(bitmap, x - frame * width, y); // Zieht den Animationsstreifen per Frame (x-Pos des Bildes - Frame * Bildlänge) 
         }
 
         // Eine Methode zur Kontrolle der Framerate um das Bild langsamer zu machen (klappt nicht so ganz :P)
         static byte timerFrame = 0;
-        public static byte getFrame(byte frame, byte min, byte max, byte step) {
+        public byte getFrame(byte frame, byte min, byte max, byte step)
+        {
             if (frame < min || frame > max) frame = min;
             if (step < 1) step = 1;
             if (timerFrame % step == 0)
             {
                 frame++;
-                if (frame > max) frame = (byte) min;
+                if (frame > max) frame = (byte)min;
             }
             return frame;
         }
@@ -192,17 +176,17 @@ namespace Das_Labyrinth
         }
 
         // Leinwand Methode die alles grafische darstellt
-        private void ActionCanvas_Paint(object sender, PaintEventArgs e)
+        public void ActionCanvas_Paint(object sender, PaintEventArgs e)
         {
-                //e.Graphics.DrawRectangle(Pens.Black, 30, 30, 0+i, 0+i); // lusdisch... aber useless xD
-                //e.Graphics.DrawImage(LinkWalkAnim, new Point(xLinkWalkAnim, yLinkWalkAnim));
+            //e.Graphics.DrawRectangle(Pens.Black, 30, 30, 0+i, 0+i); // lusdisch... aber useless xD
+            //e.Graphics.DrawImage(LinkWalkAnim, new Point(xLinkWalkAnim, yLinkWalkAnim));
 
-                /* --- Clipping--- (Wichtig: Clipping muss vor dem letzten Drawcall gesetzt werden)
-                Hier erstellen wir ein neues Grafikobjekt und legen es über unser SpriteObjekt.
-                Das Grafikobjekt ist ein Rect mit der gleichen Höhe unseres Grafikobjektes aber nur mit einer von uns definierten Breite.
-                Heisst: Bild ist 700 x30. Es handelt sich bei der Animation um 28 Einzerlbilder. Bedeutet 700 / 28 = 25. Bedeutet wir clippen
-                ein Feld von 25 x 30.
-                */
+            /* --- Clipping--- (Wichtig: Clipping muss vor dem letzten Drawcall gesetzt werden)
+            Hier erstellen wir ein neues Grafikobjekt und legen es über unser SpriteObjekt.
+            Das Grafikobjekt ist ein Rect mit der gleichen Höhe unseres Grafikobjektes aber nur mit einer von uns definierten Breite.
+            Heisst: Bild ist 700 x30. Es handelt sich bei der Animation um 28 Einzerlbilder. Bedeutet 700 / 28 = 25. Bedeutet wir clippen
+            ein Feld von 25 x 30.
+            */
             //Rectangle clipRect = new Rectangle(0, 0, 25, 30);
             //e.Graphics.SetClip(clipRect);
             //e.Graphics.DrawImage(LinkWalkAnim, 0, 0, LinkWalkAnim.Width, LinkWalkAnim.Height);

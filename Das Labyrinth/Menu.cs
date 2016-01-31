@@ -8,21 +8,35 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Das_Labyrinth
 {
     public partial class Menu : Form
     {
         Bitmap bmp_link = new Bitmap("D:\\Haspel\\Das Labyrinth\\Das Labyrinth\\src\\Link.png");
         Bitmap bmp_zelda = new Bitmap("D:\\Haspel\\Das Labyrinth\\Das Labyrinth\\src\\Zelda.png");
+        Bitmap LinkWalkAnim = new Bitmap("D:\\Haspel\\Das Labyrinth\\Das Labyrinth\\src\\link_move_anim.png");
 
+        int i = 1;
+        Animation frm = new Animation();
+
+        ActionCanvas frmcanvas = new ActionCanvas();
+
+        static int xFigure = 50;
+        static int yFigure = 10;
+        public System.Timers.Timer b = new System.Timers.Timer();
         public Menu()
         {
             InitializeComponent();
-
+            //Animation a = new Animation();
+            //a.test();
             //Set BackgroundImage der Panels zu dem dazugehörigen Bild
-            pnl_Link.BackgroundImage = bmp_link;
+            //pnl_Link.BackgroundImage = LinkWalkAnim;
             pnl_Zelda.BackgroundImage = bmp_zelda;
             lbl_error.Text = "Gib zuerst deinen Namen ein!";
+            b.Interval = 1000 / 30;                                        // Intervall der Ausführung der A_Elapsed-Methode
+            b.Elapsed += A_Elapsed;
+            b.Enabled = true;
         }
         static string gender = "link";
         public string Gender
@@ -53,12 +67,32 @@ namespace Das_Labyrinth
                 return;
             }
             Player_name = txt_name.Text;
-            //ActionCanvas frm = new ActionCanvas();
-            DrachenRechnen frm = new DrachenRechnen();
+            ActionCanvas frm = new ActionCanvas();
+            //DrachenRechnen frm = new DrachenRechnen();
             frm.Show();
         }
 
+        int xLinkWalkAnim = 10;
+        int yLinkWalkAnim = 10;
 
+        static int speedObject = 1;
+        DateTime lastUpdate = DateTime.MinValue; // Letzer Zeitpunkt des Updates von Game-Logik
+        TimeSpan updateInterval = new TimeSpan(0, 0, 0, 0, 66); // Wie oft soll die Game-Logik aktualisiert werden (50ms)
+        public void A_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            // Wenn Jetzt - letzter Zeitpunkt des Game-Logik-Updates grösser als die 50ms Update-Intervall sind, dann erneut Updaten
+            if (DateTime.Now - lastUpdate > updateInterval)
+            {
+                // Hier wird nun die Logik des Spiels vorwärts getrieben, bzw. das vom Frame erhöhen
+                yLinkWalkAnim += speedObject;
+                figureFrame = frmcanvas.getFrame(figureFrame, (byte)21, (byte)27, (byte)4);
+                lastUpdate = DateTime.Now; // Zuletzt updated = Jetzt
+            }
+            this.UIThread(delegate
+            {
+                this.Refresh();
+            });
+        }
         /* Einfache Abfrage welche PictureBox geklickt wurde. Und es wir die Farbe jeweils geändert. */
         private void playerChoiceClick(object sender, EventArgs e)
         {
@@ -131,6 +165,16 @@ namespace Das_Labyrinth
             lbl_error.Visible = false;
             txt_name.Text = "";
         }
+        static byte figureFrame = 0;
 
+        private void Menu_Paint(object sender, PaintEventArgs e)
+        {
+            
+            frm.plotFrame(LinkWalkAnim, 25, 30, figureFrame, 317, 169, e);
+            Color backColor = LinkWalkAnim.GetPixel(1, 1);
+            LinkWalkAnim.MakeTransparent(backColor);
+        }
     }
+
 }
+
